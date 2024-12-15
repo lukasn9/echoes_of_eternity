@@ -1,0 +1,4 @@
+Choose your background:
+-Thief (increased stealth success chance)
+-Knight (increased fight success chance)
+-Scholar (increased intellectual success chance)
