@@ -2,3 +2,8 @@ Choose your background:
 -Thief (increased stealth success chance)
 -Knight (increased fight success chance)
 -Scholar (increased intellectual success chance)
+
+As you rush out of your house, you find three possible paths to escape the city:
+1. Sneak past the monsters unnoticed (Stealth)
+2. Fight your way through the monsters (Strength)
+3. Escape through the city's sewage system (Intellect)
