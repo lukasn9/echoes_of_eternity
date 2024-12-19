@@ -5,11 +5,6 @@ from random import randint
 import sys
 from .chapter2 import chapter2
 
-global STEALTH_SUCCESS_CHANCE
-global STRENGTH_SUCCESS_CHANCE
-global INTELLECT_SUCCESS_CHANCE
-global GENERAL_SUCCESS_CHANCE
-
 def chapter_start():
     clear()
     print("CHAPTER 1")
@@ -50,23 +45,19 @@ def part_1(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CH
             if randint(0, 100) <= STRENGTH_SUCCESS_CHANCE:
                 text = ["You decided to fight your way through the monsters.", "With your strength, you defeat the monsters.", "You successfully escape the city."]
                 text_printing(text)
-                print()
                 continue_listener()
             else:
                 text = ["You decided to fight your way through the monsters.", "The monsters are too strong, and you are overwhelmed.", "You were killed in the battle."]
                 text_printing(text)
-                print()
                 game_over(part_1, [STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE])
         case "3" | "escape" | "intellect":
             if randint(0, 100) <= INTELLECT_SUCCESS_CHANCE:
                 text = ["You decided to escape through the city's sewage system.", "You navigate the sewage system, but come across a locked gate.", "Thankfully, you remembered how to lockpick and open it with ease.", "You successfully escape the city."]
                 text_printing(text)
-                print()
                 continue_listener()
             else:
                 text = ["You decided to escape through the city's sewage system.", "You navigate the sewage system, but come across a locked gate.", "You try to open the gate, but fail to do so.", "The monsters catch up to you and you have to fight them."]
                 text_printing(text)
-                print()
                 continue_listener()
                 fight_monsters(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE)
     part_2(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE)
@@ -137,36 +128,30 @@ def forest_path(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCE
             if randint(0, 100) <= STEALTH_SUCCESS_CHANCE:
                 text = ["You hide behind a rock and the wolves pass by without noticing you.", "You successfully escape the wolves and continue through the forest."]
                 text_printing(text)
-                print()
                 continue_listener()
             else:
                 text = ["You hide behind a rock, but the wolves find you.", "You have to fight the wolves to escape."]
                 text_printing(text)
-                print()
                 continue_listener()
                 fight_wolves(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE)
         case "2" | "climb" | "climb up a tree":
             if randint(0, 100) <= STRENGTH_SUCCESS_CHANCE:
                 text = ["You climb up a tree and the wolves pass by without noticing you.", "You successfully escape the wolves and continue through the forest."]
                 text_printing(text)
-                print()
                 continue_listener()
             else:
                 text = ["You try to climb up the tree, but you slip and fall.", "You break your spine and die."]
                 text_printing(text)
-                print()
                 continue_listener()
                 game_over(part_2, [STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE])
         case "3" | "scare" | "scare the wolves away":
             if randint(0, 100) <= INTELLECT_SUCCESS_CHANCE:
                 text = ["You scare the wolves away by making loud noises.", "You successfully escape the wolves and continue through the forest."]
                 text_printing(text)
-                print()
                 continue_listener()
             else:
                 text = ["You try to scare the wolves away, but they are not afraid of you.", "You have to fight the wolves to escape."]
                 text_printing(text)
-                print()
                 continue_listener()
                 fight_wolves(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE)
 
@@ -242,7 +227,6 @@ def bridge_path(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCE
     clear()
     text = ["You approach the damaged bridge and start crossing it.", "You get to the middle of the bridge when you notice a hole in the bridge.", "You have to cross it somehow."]
     text_printing(text)
-    print()
     continue_listener()
 
     pos_answers = ["1", "2", "3", "jump", "search", "give up", "jump over the hole", "search for another way", "give up and go back"]
@@ -257,19 +241,16 @@ def bridge_path(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCE
             if ans == "1" or ans == "jump" or ans == "jump over the hole":
                 text = ["You decide to jump over the hole.", "Unfortunately, you fall into the hole and die."]
                 text_printing(text)
-                print()
                 game_over(part_2, [STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE])
                 break
             elif ans == "2" or ans == "search" or ans == "search for another way":
                 text = ["You decide to try and find another way to cross the hole.", "While searching, you notice a wooden plank nearby.", "You use the plank to cross the hole safely.", "You successfully cross the bridge and continue your journey."]
                 text_printing(text)
-                print()
                 continue_listener()
                 break
             elif ans == "3" or ans == "give up" or ans == "give up and go back":
                 text = ["You decide to give up and go back."]
                 text_printing(text)
-                print()
                 continue_listener()
                 part_2(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE)
         else:
@@ -286,7 +267,6 @@ def bridge_path(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCE
 def fight_monsters(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE):
     text = ["You have killed all of the monsters in your way.", "Except one.", "You have to fight the last monster to escape the city."]
     text_printing(text)
-    print()
     continue_listener()
     clear()
 
@@ -294,6 +274,7 @@ def fight_monsters(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SU
     enemy_hp = 40
 
     while True:
+        clear()
         if hp <= 0:
             text = ["You have been killed by the monster."]
             text_printing(text)
@@ -303,8 +284,8 @@ def fight_monsters(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SU
             text_printing(text)
             break
         print("FIGHT: Monster")
-        print("Your HP: 100/100")
-        print("Monster's HP: 40/40")
+        print(f"Your HP: {hp}/100")
+        print(f"Monster's HP: {enemy_hp}/40")
         print("1. Attack")
         print("2. Defend")
         print("3. Run")
@@ -317,21 +298,23 @@ def fight_monsters(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SU
             text = ["The monster attacks you.", "You take 5 damage."]
             text_printing(text)
             hp -= 5
+            continue_listener()
         elif cmd == "2":
             text["You defend against the monster's attack."]
             text_printing(text)
+            continue_listener()
         elif cmd == "3":
             if randint(0, 100) <= GENERAL_SUCCESS_CHANCE:
                 clear()
                 text = ["You manage to run away from the monster.", "You successfully escape the city."]
                 text_printing(text)
-                print()
                 continue_listener()
                 part_2(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE)
             else:
                 text = ["You try to run, but the monster catches you.", "The monster attacks you.", "You take 10 damage."]
                 text_printing(text)
                 hp -= 10
+                continue_listener()
 
 def fight_wolves(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE):
     hp = 100
@@ -348,8 +331,8 @@ def fight_wolves(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCC
             text_printing(text)
             break
         print("FIGHT: Wolves")
-        print("Your HP: 100/100")
-        print("Wolves' HP: 25/25")
+        print(f"Your HP: {hp}/100")
+        print(f"Wolves' HP: {enemy_hp}/25")
         print("1. Attack")
         print("2. Defend")
         print("3. Run")
@@ -362,21 +345,23 @@ def fight_wolves(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCC
             text = ["The wolves attack you.", "You take 5 damage."]
             text_printing(text)
             hp -= 5
+            continue_listener()
         elif cmd == "2":
             text["You defend against the wolves' attack."]
             text_printing(text)
+            continue_listener()
         elif cmd == "3":
             if randint(0, 100) <= GENERAL_SUCCESS_CHANCE:
                 clear()
                 text = ["You manage to run away from the wolves.", "You continue through the forest."]
                 text_printing(text)
-                print()
                 continue_listener()
                 break
             else:
                 text = ["You try to run, but the wolves catch you.", "The wolves attack you.", "You take 10 damage."]
                 text_printing(text)
                 hp -= 10
+                continue_listener()
 
 def game_over(func, args_list=None):
     print("Game Over!")

@@ -4,6 +4,7 @@ from prologue import print_prologue
 from chapters.chapter1 import chapter1
 from input_listener import continue_listener
 from clear_terminal import clear
+from chapters.chapter2 import chapter2
 
 def game_over():
     print("You died!")
@@ -54,6 +55,7 @@ def main():
     print_prologue()
     continue_listener()
     chapter1(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE)
+    chapter2(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE)
 
 if __name__ == '__main__':
     main()
