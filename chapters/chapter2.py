@@ -3,7 +3,6 @@ from text_printing import text_printing
 from input_listener import continue_listener
 import sys
 from random import randint
-from .chapter3 import chapter3
 
 def chapter_start():
     clear()
@@ -350,8 +349,6 @@ def part_3(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CH
     text = ["You have defeated the guardian.", "The first shard is finally yours.",  "Just two more to go.", "You set off to find the next shard."]
     text_printing(text)
     continue_listener()
-
-    chapter3(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE)
 
 def fight_reflection(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE, HP=100):
     clear()
