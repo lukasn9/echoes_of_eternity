@@ -7,6 +7,7 @@ from clear_terminal import clear
 from chapters.chapter2 import chapter2
 from chapters.chapter3 import chapter3
 from chapters.chapter4 import chapter4
+from chapters.chapter5 import chapter5
 
 def game_over():
     print("You died!")
@@ -60,6 +61,7 @@ def main():
     chapter2(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE)
     chapter3(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE)
     chapter4(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE)
+    chapter5(STEALTH_SUCCESS_CHANCE, STRENGTH_SUCCESS_CHANCE, INTELLECT_SUCCESS_CHANCE, GENERAL_SUCCESS_CHANCE)
 
 if __name__ == '__main__':
     main()
